@@ -1,0 +1,32 @@
+name: Check for available bed in CAS cabin
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+  schedule:
+    - cron:  '0/30 * * * *'
+
+permissions:
+  contents: read # access to check out code and install dependencies
+
+jobs:
+  check:
+    runs-on: ubuntu-slim
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v6
+
+      - name: setup python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+
+      - run: python check.py
+
