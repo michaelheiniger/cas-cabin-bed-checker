@@ -9,6 +9,7 @@ Requirements:
     playwright install firefox
 """
 
+import os
 import sys
 import time
 from datetime import datetime, timedelta
@@ -124,6 +125,8 @@ def check_availability():
         else:
             print(f"  >>> NOT ENOUGH – only {dorm_int} dormitory beds free (need {NUM_BEDS})")
 
+        print(f"::set-output name=dorm_free::{dorm_int}")
+
         browser.close()
         return 0 if dorm_int >= NUM_BEDS else 1
 
@@ -214,4 +217,4 @@ def _parse_availability(text: str, date_str: str) -> dict | None:
 
 
 if __name__ == "__main__":
-    sys.exit(check_availability())
+    check_availability()
