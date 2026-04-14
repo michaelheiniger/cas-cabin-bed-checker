@@ -39,6 +39,9 @@ jobs:
         run: python check.py
 
       - name: Use the output
-        run: echo "Found ${{ steps.check.outputs.dorm_free }} beds"
-
-
+        shell: bash
+        run: |
+          if (( "${{ steps.check.outputs.dorm_free }}" > 0 )); then
+              echo "::error::Found ${{ steps.check.outputs.dorm_free }} available beds !" >&2
+              exit 1
+          fi
