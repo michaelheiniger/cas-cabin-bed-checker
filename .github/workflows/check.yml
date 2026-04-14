@@ -30,7 +30,7 @@ jobs:
 
       - run: playwright install
 
-      - run: playwright install firefox
+      #- run: playwright install firefox
 
       - run: playwright install-deps
       
