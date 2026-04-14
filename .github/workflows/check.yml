@@ -29,6 +29,8 @@ jobs:
       - run: pip install -r requirements.txt
 
       - run: playwright install
+
+      - run: playwright install firefox
       
       - run: python check.py
 
