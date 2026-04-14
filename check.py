@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 from playwright.sync_api import sync_playwright
 
 HUT_URL = "https://www.hut-reservation.org/reservation/book-hut/12/wizard"
-TARGET_DATE = datetime(2026, 5, 25)
+TARGET_DATE = datetime(2026, 4, 25)
 DEPARTURE_DATE = TARGET_DATE + timedelta(days=1)
 NUM_BEDS = 1
 
