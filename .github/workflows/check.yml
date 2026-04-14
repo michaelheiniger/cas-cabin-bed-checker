@@ -28,5 +28,7 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
+      - run: playwright install
+      
       - run: python check.py
 
