@@ -30,18 +30,16 @@ jobs:
 
       - run: playwright install
 
-      #- run: playwright install firefox
-
       - run: playwright install-deps
       
       - name: Check availability
         id: check
         run: python check.py
 
-      - name: Use the output
+      - name: Check the output
         shell: bash
         run: |
           if (( "${{ steps.check.outputs.dorm_free }}" > 0 )); then
-              echo "::error::Found ${{ steps.check.outputs.dorm_free }} available beds !" >&2
+              echo "::notice::Found ${{ steps.check.outputs.dorm_free }} available beds !" >&2
               exit 1
           fi
