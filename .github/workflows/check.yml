@@ -34,5 +34,11 @@ jobs:
 
       - run: playwright install-deps
       
-      - run: python check.py
+      - name: Check availability
+        id: check
+        run: python check.py
+
+      - name: Use the output
+        run: echo "Found ${{ steps.check.outputs.dorm_free }} beds"
+
 
